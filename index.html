@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car factory - example</title>
+</head>
+<body>
+    
+    <script>
+        let factory = {
+            name: "Tesla",
+            location: "USA",
+            employees: [],
+            cars: [],
+
+            makeCar: function(model, color, gearbox) {
+                let newCar = {
+                    model: model,
+                    color: color,
+                    gearbox: gearbox,
+                    origin: this.location,
+                    manufacturer: this.name,
+                };
+                this.cars[this.cars.length] = newCar;
+            },
+
+            createEmployee: function(name, age, position, salary) {
+                let newEmployee = {
+                    name: name,
+                    age: age,
+                    position: position,
+                    salary: salary,
+                    location: this.location
+                };
+                employeesNumber = this.employees.length;
+                this.employees[employeesNumber] = newEmployee;
+            },
+
+            showCars: function() {
+                for (let i = 0; i < this.cars.length; i++) {
+                    console.log(this.cars[i].model, "serial:", i+1);
+                }
+            },
+
+            showEmployees: function() {
+                for (let i = 0; i < this.employees.length; i++) {
+                    console.log(this.employees[i].name, this.employees[i].salary);
+                }
+            }
+        }
+
+        factory.makeCar("Zero", "red", "automatic");
+
+        factory.showCars();
+
+        factory.createEmployee("John", 38, "technician", 10000);
+        factory.createEmployee("Betty", 19, "cleaner", 5000);
+        factory.createEmployee("Cynthia", 44, "manager", 30000);
+        
+        factory.showEmployees();
+</script>
+</body>
+</html>
