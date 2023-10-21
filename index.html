@@ -12,7 +12,7 @@
             name: "Tesla",
             location: "USA",
             employees: [],
-            cars: [],
+            carsProduced: [],
 
             makeCar: function(model, color, gearbox) {
                 let newCar = {
@@ -22,43 +22,55 @@
                     origin: this.location,
                     manufacturer: this.name,
                 };
-                this.cars[this.cars.length] = newCar;
+                this.carsProduced[this.carsProduced.length] = newCar;
             },
 
-            createEmployee: function(name, age, position, salary) {
-                let newEmployee = {
+            addEmployee: function(name, surname, age, position, salary) {
+                let employee = {
                     name: name,
+                    surname: surname,
+                    email: `${name.toLowerCase()}.${surname.toLowerCase()}@tesla.com`,
                     age: age,
                     position: position,
                     salary: salary,
                     location: this.location
                 };
-                employeesNumber = this.employees.length;
-                this.employees[employeesNumber] = newEmployee;
+                let employeesNumber = this.employees.length;
+                this.employees[employeesNumber] = employee;
             },
 
-            showCars: function() {
-                for (let i = 0; i < this.cars.length; i++) {
-                    console.log(this.cars[i].model, "serial:", i+1);
+            showcarsProduced: function() {
+                console.log(this.name, "cars produced");
+                for (let i = 0; i < this.carsProduced.length; i++) {
+                    console.log("model: " + this.carsProduced[i].model + ", serial: " + (i+1));
                 }
+                console.log(" ");
             },
 
             showEmployees: function() {
+                console.log(this.name, "employees");
                 for (let i = 0; i < this.employees.length; i++) {
-                    console.log(this.employees[i].name, this.employees[i].salary);
+                    console.log(this.employees[i].name, this.employees[i].surname, this.employees[i].email);
                 }
+                console.log(" ");
             }
         }
 
+        factory.name = "New Tesla Corp"; // both methods allowed
+        factory["name"] = "Rimac"; // both methods allowed
+
         factory.makeCar("Zero", "red", "automatic");
+        factory.makeCar("Zero", "red", "automatic");
+        factory.makeCar("Zero", "black", "automatic");
 
-        factory.showCars();
+        factory.showcarsProduced();
 
-        factory.createEmployee("John", 38, "technician", 10000);
-        factory.createEmployee("Betty", 19, "cleaner", 5000);
-        factory.createEmployee("Cynthia", 44, "manager", 30000);
+        factory.addEmployee("John", "Brown", 38, "technician", 10000);
+        factory.addEmployee("Betty", "Fox", 19, "cleaner", 5000);
+        factory.addEmployee("Cynthia", "Ebdu", 44, "manager", 30000);
         
         factory.showEmployees();
+
 </script>
 </body>
 </html>
